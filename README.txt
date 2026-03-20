@@ -8,7 +8,7 @@ World happiness Report
 
 
 --- Models ---
-Lienar regression
+Linear regression
 KNN
 Decision tree   -   Dustin Nguyen
 Neural networks
