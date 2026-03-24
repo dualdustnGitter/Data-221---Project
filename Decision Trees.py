@@ -24,21 +24,25 @@ print("\t1) World Happiness Report 2015\n" \
 "\t5) World Happiness Report 2019\n")
 
 
-chosen_Dataset = input()
 
-if (chosen_Dataset == "1"):
-    chosen_Dataset = "WorldHappinessReport_2015.csv"
-elif (chosen_Dataset == "2"):
-    chosen_Dataset = "WorldHappinessReport_2016.csv"
-elif (chosen_Dataset == "3"):
-    chosen_Dataset = "WorldHappinessReport_2017.csv"
-elif (chosen_Dataset == "4"):
-    chosen_Dataset = "WorldHappinessReport_2018.csv"
-elif (chosen_Dataset == "5"):
-    chosen_Dataset = "WorldHappinessReport_2019.csv"
-else:
-    print("Invalid")
-    exit
+while True:
+    chosen_Dataset = input()
+    if (chosen_Dataset == "1"):
+        chosen_Dataset = "WorldHappinessReport_2015.csv"
+    elif (chosen_Dataset == "2"):
+        chosen_Dataset = "WorldHappinessReport_2016.csv"
+        break
+    elif (chosen_Dataset == "3"):
+        chosen_Dataset = "WorldHappinessReport_2017.csv"
+        break
+    elif (chosen_Dataset == "4"):
+        chosen_Dataset = "WorldHappinessReport_2018.csv"
+        break
+    elif (chosen_Dataset == "5"):
+        chosen_Dataset = "WorldHappinessReport_2019.csv"
+        break
+    else:
+        print("Invalid input, please try again (1-5) \n")
 
 
 print("Loading.. " + chosen_Dataset)

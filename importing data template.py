@@ -6,10 +6,10 @@ happiness_2015_data = pandas.read_csv("WorldHappinessReport_2015.csv") # 12 colu
     # Happiness Rank
     # Happiness Score
     # Standard Error
-    # Economy (GDP per Capita
-    # Family,Health (Life Expectancy
+    # Economy (GDP per Capita)
+    # Family,Health (Life Expectancy)
     # Freedom
-    # Trust (Government Corruption
+    # Trust (Government Corruption)
     # Generosity
     # Dystopia Residual
 happiness_2016_data = pandas.read_csv("WorldHappinessReport_2016.csv") # 13 columns 
