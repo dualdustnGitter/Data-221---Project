@@ -2,7 +2,7 @@
 Dustin Nguyen - 30242338
 Tristan Toews - 30260905
 Nursan Aden - 30284980
-
+Jerry Xu - 30245408
 --- Dataset ---
 World happiness Report
 
@@ -11,4 +11,4 @@ World happiness Report
 Linear regression - Tristan Toews
 KNN - Nursan Aden
 Decision tree   -   Dustin Nguyen
-Neural networks
+Neural networks - Jerry Xu
