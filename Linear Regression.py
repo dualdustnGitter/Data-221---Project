@@ -28,7 +28,7 @@ print("\t1) World Happiness Report 2015\n" \
 "\t5) World Happiness Report 2019\n")
 
 
-# choose dataset and load it with feature matrix and label
+# Choose dataset and load it with feature matrix and label
 while True: # loop till valid input (1-5)
     chosen_Dataset = input("Enter Number (1-5): ")
     if (chosen_Dataset == "1"): # if choosing 2015
@@ -36,7 +36,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country", # feature matrix has features that actually matter
+        X = chosen_happiness_data.loc[:,["Country", # feature matrix has features that actually matter
                                                "Region",
                                                "Economy (GDP per Capita)",
                                                "Family",
@@ -45,7 +45,7 @@ while True: # loop till valid input (1-5)
                                                "Trust (Government Corruption)",
                                                "Generosity",
                                                "Dystopia Residual"]]
-        target_happiness = chosen_happiness_data.loc[:,["Happiness Score"]] # label
+        y = chosen_happiness_data.loc[:,["Happiness Score"]] # label
 
         break # break of loop
     elif (chosen_Dataset == "2"): # if choosing 2016
@@ -70,14 +70,14 @@ while True: # loop till valid input (1-5)
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
         #print("\"Country\"")
-        feature_matrix = chosen_happiness_data.loc[:,["Country",
+        X = chosen_happiness_data.loc[:,["Country",
                                                "Economy..GDP.per.Capita.",
                                                "Family","Health..Life.Expectancy.",
                                                "Freedom",
                                                "Generosity",
                                                "Trust..Government.Corruption.",
                                                "Dystopia.Residual"]]
-        target_happiness = chosen_happiness_data.loc[:,["Happiness.Score"]]
+        y = chosen_happiness_data.loc[:,["Happiness.Score"]]
 
         break
     elif (chosen_Dataset == "4"): # if choosing 2018
@@ -85,14 +85,14 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country or region",
+        X = chosen_happiness_data.loc[:,["Country or region",
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
                                                "Freedom to make life choices",
                                                "Generosity",
                                                "Perceptions of corruption"]]
-        target_happiness = chosen_happiness_data.loc[:,["Score"]]
+        y = chosen_happiness_data.loc[:,["Score"]]
 
         break
     elif (chosen_Dataset == "5"): # if choosing 2019
@@ -100,19 +100,23 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country or region",
+        X = chosen_happiness_data.loc[:,["Country or region",
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
                                                "Freedom to make life choices",
                                                "Generosity",
                                                "Perceptions of corruption"]]
-        target_happiness = chosen_happiness_data.loc[:,["Score"]]
+        y = chosen_happiness_data.loc[:,["Score"]]
 
         break
     else:
         print("Invalid input, please try again (1-5) \n") # if invalid input restart loop, ask for input again
 
 
+# Split data using train_split_test (70% training, 30% testing)
+X_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
+
+print(X_train)
 
 
