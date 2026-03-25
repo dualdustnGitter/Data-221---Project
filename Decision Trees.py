@@ -126,8 +126,8 @@ features_train, features_test, labels_train, labels_test = train_test_split(feat
 
 
 # Build decision tree
-decision_tree_classifier = DecisionTreeRegressor(criterion="absolute_error", max_depth=100)
-decision_tree_classifier.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
+decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_depth=100)
+decision_tree_regressor.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
 
 # TODO
 # fix model.fit breaking
@@ -138,7 +138,7 @@ decision_tree_classifier.fit(pandas.get_dummies(features_train, drop_first=True)
 
 
 # testing accuracy
-predicted_labels = decision_tree_classifier.predict(features_test)
+predicted_labels = decision_tree_regressor.predict(features_test)
 accuracy = accuracy_score(labels_test, predicted_labels)
 
 print(accuracy)
