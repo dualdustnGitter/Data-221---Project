@@ -11,6 +11,7 @@ import pandas
 
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeRegressor
 
 from sklearn.metrics import accuracy_score
 
@@ -125,7 +126,7 @@ features_train, features_test, labels_train, labels_test = train_test_split(feat
 
 
 # Build decision tree
-decision_tree_classifier = DecisionTreeClassifier(criterion="entropy", max_depth=100)
+decision_tree_classifier = DecisionTreeRegressor(criterion="absolute_error", max_depth=100)
 decision_tree_classifier.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
 
 # TODO
