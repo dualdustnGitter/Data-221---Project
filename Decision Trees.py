@@ -38,9 +38,6 @@ while True:
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
         feature_matrix = chosen_happiness_data.loc[:,["Country",
                                                "Region",
-                                               "Happiness Rank",
-                                               "Happiness Score",
-                                               "Standard Error",
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
@@ -56,18 +53,60 @@ while True:
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_Dataset.loc[:,["Country"]]
+        feature_matrix = chosen_Dataset.loc[:,["Country",
+                                               "Economy (GDP per Capita)",
+                                               "Family",
+                                               "Health (Life Expectancy)",
+                                               "Freedom,Trust (Government Corruption)",
+                                               "Generosity",
+                                               "Dystopia Residual"]]
         target_happiness = chosen_Dataset.loc[:,["Happiness Score"]]
 
         break
     elif (chosen_Dataset == "3"):
         chosen_Dataset = "WorldHappinessReport_2017.csv"
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_Dataset.loc[:,["Country",
+                                               "Economy..GDP.per.Capita.",
+                                               "Family","Health..Life.Expectancy.",
+                                               "Freedom",
+                                               "Generosity",
+                                               "Trust..Government.Corruption.",
+                                               "Dystopia.Residual"]]
+        target_happiness = chosen_Dataset.loc[:,["Happiness Score"]]
+
         break
     elif (chosen_Dataset == "4"):
         chosen_Dataset = "WorldHappinessReport_2018.csv"
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_Dataset.loc[:,["Country or region",
+                                               "GDP per capita",
+                                               "Social support",
+                                               "Healthy life expectancy",
+                                               "Freedom to make life choices",
+                                               "Generosity",
+                                               "Perceptions of corruption"]]
+        target_happiness = chosen_Dataset.loc[:,["Score"]]
+
         break
     elif (chosen_Dataset == "5"):
         chosen_Dataset = "WorldHappinessReport_2019.csv"
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_Dataset.loc[:,["Country or region",
+                                               "GDP per capita",
+                                               "Social support",
+                                               "Healthy life expectancy",
+                                               "Freedom to make life choices",
+                                               "Generosity",
+                                               "Perceptions of corruption"]]
+        target_happiness = chosen_Dataset.loc[:,["Score"]]
+
         break
     else:
         print("Invalid input, please try again (1-5) \n")
