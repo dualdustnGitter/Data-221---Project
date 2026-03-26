@@ -117,6 +117,10 @@ while True: # loop till valid input (1-5)
 # Split data using train_split_test (70% training, 30% testing)
 X_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
 
-print(X_train)
+# Training the model
+lm = LinearRegression()
+lm.fit(X_train, y_train)
+
+
 
 
