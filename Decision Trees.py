@@ -43,7 +43,6 @@ while True: # loop till valid input (1-5)
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
         feature_matrix = chosen_happiness_data.loc[:,["Country", # feature matrix has features that actually matter
-                                               "Region",
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
