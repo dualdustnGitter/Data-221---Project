@@ -36,8 +36,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pd.read_csv(chosen_Dataset)
-        X = chosen_happiness_data.loc[:,["Country", # feature matrix has features that actually matter
-                                               "Region",
+        X = chosen_happiness_data.loc[:,[ # feature matrix has features that actually matter
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
@@ -53,7 +52,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pd.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country",
+        feature_matrix = chosen_happiness_data.loc[:,[
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
@@ -85,7 +84,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pd.read_csv(chosen_Dataset)
-        X = chosen_happiness_data.loc[:,["Country or region",
+        X = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
@@ -100,7 +99,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pd.read_csv(chosen_Dataset)
-        X = chosen_happiness_data.loc[:,["Country or region",
+        X = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
@@ -113,11 +112,11 @@ while True: # loop till valid input (1-5)
     else:
         print("Invalid input, please try again (1-5) \n") # if invalid input restart loop, ask for input again
 
-
 # Split data using train_split_test (70% training, 30% testing)
 X_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
 
-# Remove Happniness Ranks from datasets
+"""
+# Remove Happiness Ranks from datasets
 variations = ['Happiness Rank', 'Happiness.Rank', 'Overall rank', 'Rank']
 X_train = X_train.drop(columns=variations, errors='ignore')
 X_test = x_test.drop(columns=variations, errors='ignore')
@@ -126,14 +125,17 @@ X_test = x_test.drop(columns=variations, errors='ignore')
 non_numeric_cols = ['Country', 'Region', 'Country or region']
 X_train = X_train.drop(columns=non_numeric_cols, errors='ignore')
 X_test = x_test.drop(columns=non_numeric_cols, errors='ignore')
+"""
 
 # Training the model
 lm = LinearRegression()
 lm.fit(X_train, y_train)
 
 # Predictions
-#predictions = lm.predict(x_test)
-#print(predictions)
+predictions = lm.predict(x_test)
+
+# Model accuracy
+
 
 
 
