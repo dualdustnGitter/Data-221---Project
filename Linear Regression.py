@@ -118,7 +118,7 @@ while True: # loop till valid input (1-5)
 X_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
 
 # Ignore categorical text
-non_numeric_cols = ['Country', 'Region']
+non_numeric_cols = ['Country', 'Region', 'Country or region']
 X_train = X_train.drop(columns=non_numeric_cols, errors='ignore')
 X_test = x_test.drop(columns=non_numeric_cols, errors='ignore')
 
