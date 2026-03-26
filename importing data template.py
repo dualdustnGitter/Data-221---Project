@@ -1,11 +1,11 @@
 import pandas
 
 happiness_2015_data = pandas.read_csv("WorldHappinessReport_2015.csv") # 12 columns
-    # Country
-    # Region
-    # Happiness Rank
-    # Happiness Score
-    # Standard Error
+    # Country                           # dont include
+    # Region                            # dont include
+    # Happiness Rank                    # dont include
+    # Happiness Score                       # label
+    # Standard Error                    # dont include
     # Economy (GDP per Capita)
     # Family,Health (Life Expectancy)
     # Freedom
@@ -13,12 +13,12 @@ happiness_2015_data = pandas.read_csv("WorldHappinessReport_2015.csv") # 12 colu
     # Generosity
     # Dystopia Residual
 happiness_2016_data = pandas.read_csv("WorldHappinessReport_2016.csv") # 13 columns 
-    # Country
-    # Region
-    # Happiness Rank
-    # Happiness Score
-    # Lower Confidence Interval
-    # Upper Confidence Interval
+    # Country                           # dont include
+    # Region                            # dont include
+    # Happiness Rank                    # dont include
+    # Happiness Score                       # label
+    # Lower Confidence Interval         # dont include
+    # Upper Confidence Interval         # dont include
     # Economy (GDP per Capita)
     # Family,Health (Life Expectancy)
     # Freedom
@@ -26,11 +26,11 @@ happiness_2016_data = pandas.read_csv("WorldHappinessReport_2016.csv") # 13 colu
     # Generosity
     # Dystopia Residual
 happiness_2017_data = pandas.read_csv("WorldHappinessReport_2017.csv") # 12 columns 
-    # "Country"
-    # "Happiness.Rank"
-    # "Happiness.Score"
-    # "Whisker.high"
-    # "Whisker.low"
+    # "Country"                         # dont include
+    # "Happiness.Rank"                  # dont include
+    # "Happiness.Score"                     # label
+    # "Whisker.high"                    # dont include
+    # "Whisker.low"                     # dont include
     # "Economy..GDP.per.Capita."
     # "Family"
     # "Health..Life.Expectancy."
@@ -39,9 +39,9 @@ happiness_2017_data = pandas.read_csv("WorldHappinessReport_2017.csv") # 12 colu
     # "Trust..Government.Corruption."
     # "Dystopia.Residual"
 happiness_2018_data = pandas.read_csv("WorldHappinessReport_2018.csv") # 9 columns 
-    # Overall rank
-    # Country or region
-    # Score
+    # Overall rank                      # dont include
+    # Country or region                 # dont include
+    # Score                                 # label
     # GDP per capita
     # Social support
     # Healthy life expectancy
@@ -49,9 +49,9 @@ happiness_2018_data = pandas.read_csv("WorldHappinessReport_2018.csv") # 9 colum
     # Generosity
     # Perceptions of corruption
 happiness_2019_data = pandas.read_csv("WorldHappinessReport_2019.csv") # 9 columns 
-    # Overall rank
-    # Country or region
-    # Score
+    # Overall rank                      # dont include
+    # Country or region                 # dont include
+    # Score                                 # label
     # GDP per capita
     # Social support
     # Healthy life expectancy

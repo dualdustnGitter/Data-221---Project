@@ -42,7 +42,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country", # feature matrix has features that actually matter
+        feature_matrix = chosen_happiness_data.loc[:,[ # feature matrix has features that actually matter
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
@@ -121,23 +121,18 @@ while True: # loop till valid input (1-5)
 
 
 # split data
-features_train, features_test, labels_train, labels_test = train_test_split(feature_matrix, target_happiness, test_size=0.2, random_state=42)
+features_train, features_test, labels_train, labels_test = train_test_split(feature_matrix, target_happiness, test_size=0.3, random_state=42)
 
 
 # Build decision tree
 decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_depth=100)
 decision_tree_regressor.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
 
-# TODO
-# fix model.fit breaking
-
-# tried to_categorical
-# tried pandas.get_dummies # works
-    # but decision tree is for classifying, we're predicting continous data
-
 
 # testing accuracy
 predicted_labels = decision_tree_regressor.predict(features_test)
-accuracy = accuracy_score(labels_test, predicted_labels)
+# accuracy = accuracy_score(labels_test, predicted_labels)
+score_of_model = decision_tree_regressor.score(features_test, labels_test)
 
-print(accuracy)
+# print(accuracy)
+print(score_of_model)
