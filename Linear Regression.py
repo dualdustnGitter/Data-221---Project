@@ -52,7 +52,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pd.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,[
+        X = chosen_happiness_data.loc[:,[
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
@@ -60,7 +60,7 @@ while True: # loop till valid input (1-5)
                                                "Trust (Government Corruption)",
                                                "Generosity",
                                                "Dystopia Residual"]]
-        target_happiness = chosen_happiness_data.loc[:,["Happiness Score"]]
+        y = chosen_happiness_data.loc[:,["Happiness Score"]]
 
         break
     elif (chosen_Dataset == "3"): # if choosing 2017
@@ -69,7 +69,7 @@ while True: # loop till valid input (1-5)
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pd.read_csv(chosen_Dataset)
         #print("\"Country\"")
-        X = chosen_happiness_data.loc[:,["Country",
+        X = chosen_happiness_data.loc[:,[
                                                "Economy..GDP.per.Capita.",
                                                "Family","Health..Life.Expectancy.",
                                                "Freedom",
