@@ -74,7 +74,6 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        print("\"Country\"")
         feature_matrix = chosen_happiness_data.loc[:,[
                                                "Economy..GDP.per.Capita.",
                                                "Family","Health..Life.Expectancy.",
@@ -89,7 +88,9 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2018.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        precleaned_chosen_happiness_data = pandas.read_csv(chosen_Dataset) # 2018 dataset has missing values
+        chosen_happiness_data = precleaned_chosen_happiness_data.dropna() # clean it
+
         feature_matrix = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
@@ -98,6 +99,7 @@ while True: # loop till valid input (1-5)
                                                "Generosity",
                                                "Perceptions of corruption"]]
         target_happiness = chosen_happiness_data.loc[:,["Score"]]
+
 
         break
     elif (chosen_Dataset == "5"):
@@ -125,7 +127,7 @@ features_train, features_test, labels_train, labels_test = train_test_split(feat
 
 
 # Build decision tree
-decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_depth=100)
+decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_depth=100, random_state=42)
 decision_tree_regressor.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
 
 
@@ -135,4 +137,4 @@ predicted_labels = decision_tree_regressor.predict(features_test)
 score_of_model = decision_tree_regressor.score(features_test, labels_test)
 
 # print(accuracy)
-print(score_of_model)
+print("Score of Decision tree Model: " + str(score_of_model))
