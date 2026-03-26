@@ -7,17 +7,17 @@
 ###
 
 #Importing
-import pandas
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-happiness_2015_data = pandas.read_csv("WorldHappinessReport_2015.csv")
-happiness_2016_data = pandas.read_csv("WorldHappinessReport_2016.csv")
-happiness_2017_data = pandas.read_csv("WorldHappinessReport_2017.csv")
-happiness_2018_data = pandas.read_csv("WorldHappinessReport_2018.csv")
-happiness_2019_data = pandas.read_csv("WorldHappinessReport_2019.csv")
+happiness_2015_data = pd.read_csv("WorldHappinessReport_2015.csv")
+happiness_2016_data = pd.read_csv("WorldHappinessReport_2016.csv")
+happiness_2017_data = pd.read_csv("WorldHappinessReport_2017.csv")
+happiness_2018_data = pd.read_csv("WorldHappinessReport_2018.csv")
+happiness_2019_data = pd.read_csv("WorldHappinessReport_2019.csv")
 
 # User chooses which dataset to predict
 print("Choose dataset to use: ")
@@ -35,7 +35,7 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2015.csv" # file to open/load
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        chosen_happiness_data = pd.read_csv(chosen_Dataset)
         X = chosen_happiness_data.loc[:,["Country", # feature matrix has features that actually matter
                                                "Region",
                                                "Economy (GDP per Capita)",
@@ -52,7 +52,7 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2016.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        chosen_happiness_data = pd.read_csv(chosen_Dataset)
         feature_matrix = chosen_happiness_data.loc[:,["Country",
                                                "Economy (GDP per Capita)",
                                                "Family",
@@ -68,7 +68,7 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2017.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        chosen_happiness_data = pd.read_csv(chosen_Dataset)
         #print("\"Country\"")
         X = chosen_happiness_data.loc[:,["Country",
                                                "Economy..GDP.per.Capita.",
@@ -84,7 +84,7 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2018.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        chosen_happiness_data = pd.read_csv(chosen_Dataset)
         X = chosen_happiness_data.loc[:,["Country or region",
                                                "GDP per capita",
                                                "Social support",
@@ -99,7 +99,7 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2019.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        chosen_happiness_data = pd.read_csv(chosen_Dataset)
         X = chosen_happiness_data.loc[:,["Country or region",
                                                "GDP per capita",
                                                "Social support",
@@ -117,9 +117,18 @@ while True: # loop till valid input (1-5)
 # Split data using train_split_test (70% training, 30% testing)
 X_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
 
+# Ignore categorical text
+non_numeric_cols = ['Country', 'Region']
+X_train = X_train.drop(columns=non_numeric_cols, errors='ignore')
+X_test = x_test.drop(columns=non_numeric_cols, errors='ignore')
+
 # Training the model
 lm = LinearRegression()
 lm.fit(X_train, y_train)
+
+# Predictions
+#predictions = lm.predict(x_test)
+#print(predictions)
 
 
 
