@@ -134,8 +134,10 @@ lm.fit(X_train, y_train)
 
 # Predictions
 predictions = lm.predict(x_test)
+model_score = lm.score(x_test, y_test)
 
 # Model accuracy
+print(f"Model Accuracy: {model_score}")
 
 
 
