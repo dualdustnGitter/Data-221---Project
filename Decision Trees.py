@@ -58,7 +58,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country",
+        feature_matrix = chosen_happiness_data.loc[:,[
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
@@ -75,7 +75,7 @@ while True: # loop till valid input (1-5)
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
         print("\"Country\"")
-        feature_matrix = chosen_happiness_data.loc[:,["Country",
+        feature_matrix = chosen_happiness_data.loc[:,[
                                                "Economy..GDP.per.Capita.",
                                                "Family","Health..Life.Expectancy.",
                                                "Freedom",
@@ -90,7 +90,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country or region",
+        feature_matrix = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
@@ -105,7 +105,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,["Country or region",
+        feature_matrix = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
