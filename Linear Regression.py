@@ -129,6 +129,7 @@ X_test = x_test.drop(columns=non_numeric_cols, errors='ignore')
 
 # Training the model
 lm = LinearRegression()
+lm.fit(pd.get_dummies(X_train, drop_first=True), y_train)
 lm.fit(X_train, y_train)
 
 # Predictions
