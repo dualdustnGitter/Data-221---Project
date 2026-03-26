@@ -74,7 +74,6 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        print("\"Country\"")
         feature_matrix = chosen_happiness_data.loc[:,[
                                                "Economy..GDP.per.Capita.",
                                                "Family","Health..Life.Expectancy.",
@@ -89,7 +88,9 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2018.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        precleaned_chosen_happiness_data = pandas.read_csv(chosen_Dataset) # 2018 dataset has missing values
+        chosen_happiness_data = precleaned_chosen_happiness_data.dropna() # clean it
+
         feature_matrix = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
@@ -98,6 +99,7 @@ while True: # loop till valid input (1-5)
                                                "Generosity",
                                                "Perceptions of corruption"]]
         target_happiness = chosen_happiness_data.loc[:,["Score"]]
+
 
         break
     elif (chosen_Dataset == "5"):
