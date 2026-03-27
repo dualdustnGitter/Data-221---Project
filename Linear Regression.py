@@ -83,7 +83,8 @@ while True: # loop till valid input (1-5)
         chosen_Dataset = "WorldHappinessReport_2018.csv"
 
         print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pd.read_csv(chosen_Dataset)
+        precleaned_chosen_happiness_data = pd.read_csv(chosen_Dataset)  # 2018 dataset has missing values
+        chosen_happiness_data = precleaned_chosen_happiness_data.dropna()  # clean it
         X = chosen_happiness_data.loc[:,[
                                                "GDP per capita",
                                                "Social support",
