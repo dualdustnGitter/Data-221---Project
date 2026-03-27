@@ -127,14 +127,14 @@ features_train, features_test, labels_train, labels_test = train_test_split(feat
 
 
 # Build decision tree
-decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_depth=100, random_state=42)
+decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_depth=7, random_state=42)
 decision_tree_regressor.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
 
 
 # testing accuracy
 predicted_labels = decision_tree_regressor.predict(features_test)
 # accuracy = accuracy_score(labels_test, predicted_labels)
-score_of_model = decision_tree_regressor.score(features_test, labels_test)
+score_of_model = decision_tree_regressor.score(features_test, labels_test) # r square score
 
 # print(accuracy)
 print("Score of Decision tree Model: " + str(score_of_model))
