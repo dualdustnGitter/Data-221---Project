@@ -10,10 +10,9 @@
 import pandas
 
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.tree import DecisionTreeRegressor
 
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import mean_absolute_error, root_mean_squared_error
 
 # from tensorflow.keras.utils import to_categorical
 
@@ -131,10 +130,17 @@ decision_tree_regressor = DecisionTreeRegressor(criterion="absolute_error", max_
 decision_tree_regressor.fit(pandas.get_dummies(features_train, drop_first=True), labels_train)
 
 
-# testing accuracy
+# predict
 predicted_labels = decision_tree_regressor.predict(features_test)
+
+# get predict scores
 # accuracy = accuracy_score(labels_test, predicted_labels)
 score_of_model = decision_tree_regressor.score(features_test, labels_test) # r square score
+score_of_model_MAE = mean_absolute_error(labels_test, predicted_labels) # MAE score of model
+score_of_model_RMSE = root_mean_squared_error(labels_test, predicted_labels) # RMSE score of model
+
 
 # print(accuracy)
 print("Score of Decision tree Model: " + str(score_of_model))
+print("MAE of Decision tree Model: " + str(score_of_model))
+print("RMSE of Decision tree Model: " + str(score_of_model))
