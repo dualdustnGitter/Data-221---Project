@@ -115,18 +115,6 @@ while True: # loop till valid input (1-5)
 # Split data using train_split_test (70% training, 30% testing)
 X_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 42)
 
-"""
-# Remove Happiness Ranks from datasets
-variations = ['Happiness Rank', 'Happiness.Rank', 'Overall rank', 'Rank']
-X_train = X_train.drop(columns=variations, errors='ignore')
-X_test = x_test.drop(columns=variations, errors='ignore')
-
-# Ignore categorical text
-non_numeric_cols = ['Country', 'Region', 'Country or region']
-X_train = X_train.drop(columns=non_numeric_cols, errors='ignore')
-X_test = x_test.drop(columns=non_numeric_cols, errors='ignore')
-"""
-
 # Training the model
 lm = LinearRegression()
 lm.fit(pd.get_dummies(X_train, drop_first=True), y_train)
@@ -134,12 +122,14 @@ lm.fit(X_train, y_train)
 
 # Predictions
 predictions = lm.predict(x_test)
+
+# Calculate scores
 model_score = lm.score(x_test, y_test)
+model_score_MAE = mean_absolute_error(y_test, predictions)
+model_score_MSE = mean_squared_error(y_test, predictions)
 
 # Model accuracy
-print(f"Model Accuracy: {model_score}")
-
-
-
-
+print(f"Score of Linear Regression model: {model_score}")
+print(f"MAE of Linear Regression model: {model_score_MAE}")
+print(f"MSE of Linear Regression model: {model_score_MSE}")
 
