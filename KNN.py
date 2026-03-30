@@ -115,3 +115,8 @@ while True:  # loop till valid input (1-5)
 
     else:
         print("Invalid input, please try again (1-5) \n")
+
+# split data
+features_train, features_test, labels_train, labels_test = train_test_split(
+    feature_matrix, target_happiness, test_size=0.3, random_state=42
+)
