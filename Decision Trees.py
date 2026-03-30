@@ -142,5 +142,5 @@ score_of_model_RMSE = root_mean_squared_error(labels_test, predicted_labels) # R
 
 # print(accuracy)
 print("Score of Decision tree Model: " + str(score_of_model))
-print("MAE of Decision tree Model: " + str(score_of_model))
-print("RMSE of Decision tree Model: " + str(score_of_model))
+print("MAE of Decision tree Model: " + str(score_of_model_MAE))
+print("RMSE of Decision tree Model: " + str(score_of_model_RMSE))
