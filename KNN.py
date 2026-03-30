@@ -127,3 +127,20 @@ knn_regressor = Pipeline([
     ("scaler", StandardScaler()),
     ("knn", KNeighborsRegressor(n_neighbors=5, weights="distance"))
 ])
+
+# training the model
+knn_regressor.fit(features_train, labels_train)
+
+# predictions
+predicted_labels = knn_regressor.predict(features_test)
+
+# evaluation metrics
+mae = mean_absolute_error(labels_test, predicted_labels)
+rmse = np.sqrt(mean_squared_error(labels_test, predicted_labels))
+r2 = r2_score(labels_test, predicted_labels)
+
+# print results
+print("KNN Model Results:")
+print("MAE: " + str(mae))
+print("RMSE: " + str(rmse))
+print("R^2 Score: " + str(r2))
