@@ -120,3 +120,10 @@ while True:  # loop till valid input (1-5)
 features_train, features_test, labels_train, labels_test = train_test_split(
     feature_matrix, target_happiness, test_size=0.3, random_state=42
 )
+
+# build KNN pipeline
+knn_regressor = Pipeline([
+    ("imputer", SimpleImputer(strategy="mean")),
+    ("scaler", StandardScaler()),
+    ("knn", KNeighborsRegressor(n_neighbors=5, weights="distance"))
+])
