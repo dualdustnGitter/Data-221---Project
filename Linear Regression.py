@@ -12,6 +12,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import mean_squared_error, mean_absolute_error
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 happiness_2015_data = pd.read_csv("WorldHappinessReport_2015.csv")
 happiness_2016_data = pd.read_csv("WorldHappinessReport_2016.csv")
@@ -133,4 +135,27 @@ model_score_MSE = mean_squared_error(y_test, predictions)
 print(f"Score of Linear Regression model: {model_score}")
 print(f"MAE of Linear Regression model: {model_score_MAE}")
 print(f"MSE of Linear Regression model: {model_score_MSE}")
+
+# Prepare data for plotting
+plot_df = pd.DataFrame({
+    "Actual Happiness": y_test.values.ravel(),
+    "Predicted Happiness": predictions.ravel()
+})
+
+# Create the Regression Plot
+plt.figure(figsize=(10, 6))
+sns.set_style("ticks")
+
+# Draw the scatter points and the linear regression line
+plot = sns.regplot(x="Actual Happiness", y="Predicted Happiness", data=plot_df,
+            scatter_kws={"color": "teal", "alpha": 0.5},
+            line_kws={"color": "orange"})
+
+# Add labels and title based on the user's choice
+plt.title(f"Regression Analysis: {chosen_Dataset}")
+plt.xlabel("Actual Score (from Dataset)")
+plt.ylabel("Predicted Score (from Model)")
+
+# Show the plot
+plt.show()
 
