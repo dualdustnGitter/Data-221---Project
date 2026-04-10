@@ -5,6 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+import matplotlib.pyplot as plt
+import math
 
 #read files
 happiness_2015_data = pd.read_csv("WorldHappinessReport_2015.csv")
@@ -119,3 +121,13 @@ y_pre = model.predict(X_test)
 print(f"R2 score:{r2_score(y_test, y_pre)}")
 print(f"MAE:{mean_absolute_error(y_test, y_pre)}")
 print(f"MSE:{mean_squared_error(y_test, y_pre)}")
+
+#graph: actual vs predicted
+plt.figure(figsize=(8,6))
+plt.plot(range(len(y_test)), y_test.values, marker='o', color='blue', label="actual")
+plt.plot(range(len(y_pre)), y_pre, marker='o', color='red', label="predicted")
+plt.xlabel("Test Data Index")
+plt.ylabel("Happiness Score")
+plt.title("Actual vs Predicted Happiness Score")
+plt.legend()
+plt.show()
