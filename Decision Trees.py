@@ -68,7 +68,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,]
+        feature_matrix = chosen_happiness_data.loc[:,featureNames]
         target_happiness = chosen_happiness_data.loc[:,["Happiness Score"]]
 
         break
@@ -84,7 +84,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,]
+        feature_matrix = chosen_happiness_data.loc[:,featureNames]
         target_happiness = chosen_happiness_data.loc[:,["Happiness.Score"]]
 
         break
@@ -102,7 +102,7 @@ while True: # loop till valid input (1-5)
         precleaned_chosen_happiness_data = pandas.read_csv(chosen_Dataset) # 2018 dataset has missing values
         chosen_happiness_data = precleaned_chosen_happiness_data.dropna() # clean it
 
-        feature_matrix = chosen_happiness_data.loc[:,]
+        feature_matrix = chosen_happiness_data.loc[:,featureNames]
         target_happiness = chosen_happiness_data.loc[:,["Score"]]
 
 
@@ -119,7 +119,7 @@ while True: # loop till valid input (1-5)
 
         print("Loading.. " + chosen_Dataset)
         chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,]
+        feature_matrix = chosen_happiness_data.loc[:,featureNames]
         target_happiness = chosen_happiness_data.loc[:,["Score"]]
 
         break
