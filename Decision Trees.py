@@ -10,11 +10,12 @@
 import pandas
 
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeRegressor, plot_tree
 
 from sklearn.metrics import mean_absolute_error, root_mean_squared_error
+import matplotlib.pyplot as plt
 
-# from tensorflow.keras.utils import to_categorical
+
 
 
 # happiness_2015_data = pandas.read_csv("WorldHappinessReport_2015.csv")
@@ -34,85 +35,91 @@ print("\t1) World Happiness Report 2015\n" \
 
 
 # choose dataset and load it with feature matrix and label
+featureNames = [""]
 while True: # loop till valid input (1-5)
     chosen_Dataset = input()
     if (chosen_Dataset == "1"): # if choosing 2015
         chosen_Dataset = "WorldHappinessReport_2015.csv" # file to open/load
-
-        print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,[ # feature matrix has features that actually matter
+        featureNames = [ # feature matrix has features that actually matter
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
                                                "Freedom",
                                                "Trust (Government Corruption)",
                                                "Generosity",
-                                               "Dystopia Residual"]]
+                                               "Dystopia Residual"]
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_happiness_data.loc[:,featureNames]
         target_happiness = chosen_happiness_data.loc[:,["Happiness Score"]] # label
 
         break # break of loop
     elif (chosen_Dataset == "2"):
         chosen_Dataset = "WorldHappinessReport_2016.csv"
-
-        print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,[
+        featureNames = [
                                                "Economy (GDP per Capita)",
                                                "Family",
                                                "Health (Life Expectancy)",
                                                "Freedom",
                                                "Trust (Government Corruption)",
                                                "Generosity",
-                                               "Dystopia Residual"]]
+                                               "Dystopia Residual"]
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_happiness_data.loc[:,]
         target_happiness = chosen_happiness_data.loc[:,["Happiness Score"]]
 
         break
     elif (chosen_Dataset == "3"):
         chosen_Dataset = "WorldHappinessReport_2017.csv"
-
-        print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,[
+        featureNames = [
                                                "Economy..GDP.per.Capita.",
                                                "Family","Health..Life.Expectancy.",
                                                "Freedom",
                                                "Generosity",
                                                "Trust..Government.Corruption.",
-                                               "Dystopia.Residual"]]
+                                               "Dystopia.Residual"]
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_happiness_data.loc[:,]
         target_happiness = chosen_happiness_data.loc[:,["Happiness.Score"]]
 
         break
     elif (chosen_Dataset == "4"):
         chosen_Dataset = "WorldHappinessReport_2018.csv"
-
-        print("Loading.. " + chosen_Dataset)
-        precleaned_chosen_happiness_data = pandas.read_csv(chosen_Dataset) # 2018 dataset has missing values
-        chosen_happiness_data = precleaned_chosen_happiness_data.dropna() # clean it
-
-        feature_matrix = chosen_happiness_data.loc[:,[
+        featureNames = [
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
                                                "Freedom to make life choices",
                                                "Generosity",
-                                               "Perceptions of corruption"]]
+                                               "Perceptions of corruption"]
+
+        print("Loading.. " + chosen_Dataset)
+        precleaned_chosen_happiness_data = pandas.read_csv(chosen_Dataset) # 2018 dataset has missing values
+        chosen_happiness_data = precleaned_chosen_happiness_data.dropna() # clean it
+
+        feature_matrix = chosen_happiness_data.loc[:,]
         target_happiness = chosen_happiness_data.loc[:,["Score"]]
 
 
         break
     elif (chosen_Dataset == "5"):
         chosen_Dataset = "WorldHappinessReport_2019.csv"
-
-        print("Loading.. " + chosen_Dataset)
-        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
-        feature_matrix = chosen_happiness_data.loc[:,[
+        featureNames = [
                                                "GDP per capita",
                                                "Social support",
                                                "Healthy life expectancy",
                                                "Freedom to make life choices",
                                                "Generosity",
-                                               "Perceptions of corruption"]]
+                                               "Perceptions of corruption"]
+
+        print("Loading.. " + chosen_Dataset)
+        chosen_happiness_data = pandas.read_csv(chosen_Dataset)
+        feature_matrix = chosen_happiness_data.loc[:,]
         target_happiness = chosen_happiness_data.loc[:,["Score"]]
 
         break
@@ -144,3 +151,9 @@ score_of_model_RMSE = root_mean_squared_error(labels_test, predicted_labels) # R
 print("Score of Decision tree Model: " + str(score_of_model))
 print("MAE of Decision tree Model: " + str(score_of_model_MAE))
 print("RMSE of Decision tree Model: " + str(score_of_model_RMSE))
+
+
+# show decision tree layers
+fig, ax = plt.subplots(figsize=(100,30), dpi=300)
+plot_tree(decision_tree_regressor, fontsize=10, ax=ax)
+fig.savefig("Decision_Tree_Visual.png")
